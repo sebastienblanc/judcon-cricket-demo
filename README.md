@@ -1,36 +1,18 @@
 judcon-cricket
 ==============
 
-#Forge Script
-```
+# Deploy to JBOSS
 
-new-project --named judcon-cricket --topLevelPackage org.jboss.aerogear.judconcricket 
-persistence setup --provider HIBERNATE --container JBOSS_AS7
-entity --named Match --package org.jboss.aerogear.judconcricket.model
-field string --named description
-field string --named title
-field string --named teamOne
-field string --named teamTwo
-field string --named score
- 
-entity --named Comment --package org.jboss.aerogear.judconcricket.model
-field string --named description
-field string --named title
-field string --named author
-field string --named content
-field manyToOne --named match --fieldType org.jboss.aerogear.judconcricket.model.Match.java
-cd ..
-pickup Match
-field oneToMany --named comments --fieldType org.jboss.aerogear.judconcricket.model.Comment.java
- 
-forge git-plugin https://github.com/sebastienblanc/angularjs-scaffoldx-plugin --ref topcoat
- 
-rest setup --activatorType APP_CLASS
-rest endpoint-from-entity --contentType application/json org.jboss.aerogear.judconcricket.model.* --strategy ROOT_AND_NESTED_DTO 
-cd ..
-scaffold-x setup --scaffoldType angularjs
-scaffold-x from *
+```
+as7 setup
+as7 deploy
 
 ```
 
+# Browse to the application
 
+```  http://localhost:8080/judcon-cricket/ ```
+
+![](http://s30.postimg.org/km5botlc1/Screen_Shot_2014_01_15_at_23_50_55.png)
+
+When done, please go to [Step 3](https://github.com/sebastienblanc/judcon-cricket-demo/tree/step3#judcon-cricket)
