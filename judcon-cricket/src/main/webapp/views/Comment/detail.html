@@ -1,0 +1,58 @@
+<header ng-switch on="$location.path().endsWith('/Comments/new')">
+    <h3 ng-switch-when="true">Create Comment</h3>
+    <h3 ng-switch-when="false">View or edit Comment</h3>
+</header>
+<form id="CommentForm" name="CommentForm" class="form-horizontal">
+    <div ng-show="displayError" class="alert alert-error">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    <div class="control-group" ng-class="{error: CommentForm.author.$invalid}">
+        <label for="author" class="control-label">Author</label>
+        <div id="authorControls" class="controls">
+            <input id="author" name="author" type="text" class="topcoat-text-input"  ng-model="comment.author" placeholder="Enter the Comment Author"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: CommentForm.content.$invalid}">
+        <label for="content" class="control-label">Content</label>
+        <div id="contentControls" class="controls">
+            <input id="content" name="content" type="text" class="topcoat-text-input"  ng-model="comment.content" placeholder="Enter the Comment Content"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: CommentForm.title.$invalid}">
+        <label for="title" class="control-label">Title</label>
+        <div id="titleControls" class="controls">
+            <input id="title" name="title" type="text" class="topcoat-text-input"  ng-model="comment.title" placeholder="Enter the Comment Title"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: CommentForm.description.$invalid}">
+        <label for="description" class="control-label">Description</label>
+        <div id="descriptionControls" class="controls">
+            <input id="description" name="description" type="text" class="topcoat-text-input"  ng-model="comment.description" placeholder="Enter the Comment Description"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: CommentForm.match.$invalid}">
+        <label for="match" class="control-label">Match</label>
+        <div id="matchControls" class="controls">
+        <select id="match" name="match" ng-model="matchSelection" ng-options="m.text for m in matchSelectionList"  >
+            <option value="">Choose a Match</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="bar bottom">
+        <div class="settings container">
+            <a href="#/"> <img src='img/home.svg' />
+            </a>
+            <a href="#/Posts"> <img src='img/listview.svg' />
+            </a>
+            <a id="savesaveComment" name="saveComment" role="button"
+               ng-click="save()" >
+                <img src='img/save.svg'/>
+            </a>
+            <a id="delete" name="delete" role="button"
+               ng-click="remove()" >
+                <img src='img/delete.svg'/>
+            </a>
+        </div>
+    </div>
+</form>
