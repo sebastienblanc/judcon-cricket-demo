@@ -1,15 +1,14 @@
 judcon-cricket
 ==============
 
-# Cricket Remote Score Service
+# Create Cordova App
 
-Inspired from https://github.com/spriyan/CricScoreGAE
+``` cordova create judcon-cricket-client  ```
 
 
-# Refresh the app and select match
+# Copy content of the backend ``` webapp ```  to the ``` www ``` cordova folder
 
-![](http://s21.postimg.org/a4ztdxxrb/Screen_Shot_2014_01_16_at_11_03_44.png)
+```  cp -R judcon-cricket/src/main/webapp/ judcon-cricket-client/www/  ```
 
-When done, please go to [Step 4](https://github.com/sebastienblanc/judcon-cricket-demo/tree/step4#judcon-cricket)
 
 
