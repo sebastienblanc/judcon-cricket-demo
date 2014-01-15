@@ -33,4 +33,5 @@ scaffold-x from *
 
 ```
 
+When done, please go to [Step 2](https://github.com/sebastienblanc/judcon-cricket-demo/tree/step2#judcon-cricket)
 
