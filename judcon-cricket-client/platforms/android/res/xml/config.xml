@@ -1,16 +1,42 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.jboss.aerogear.judconcricket" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Hello Cordova</name>
+    <content src="index.html" />
     <preference name="loglevel" value="DEBUG" />
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <name>Hello Cordova</name>
+    <name>judcon-cricket-client</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="aerogear-dev@lists.jboss.org" href="http://aerogear.org/">
+       JBoss by Red Hat
     </author>
-    <content src="index.html" />
+    <plugins>
+        <plugin name="Device" value="CDVDevice" />
+        <plugin name="Logger" value="CDVLogger" />
+        <plugin name="Compass" value="CDVLocation" />
+        <plugin name="Accelerometer" value="CDVAccelerometer" />
+        <plugin name="Camera" value="CDVCamera" />
+        <plugin name="NetworkStatus" value="CDVConnection" />
+        <plugin name="Contacts" value="CDVContacts" />
+        <plugin name="Debug Console" value="CDVDebugConsole" />
+        <plugin name="Echo" value="CDVEcho" />
+        <plugin name="File" value="CDVFile" />
+        <plugin name="FileTransfer" value="CDVFileTransfer" />
+        <plugin name="Geolocation" value="CDVLocation" />
+        <plugin name="Notification" value="CDVNotification" />
+        <plugin name="Media" value="CDVSound" />
+        <plugin name="Capture" value="CDVCapture" />
+        <plugin name="SplashScreen" value="CDVSplashScreen" />
+        <plugin name="Battery" value="CDVBattery" />
+        <plugin name="Globalization" value="CDVGlobalization" />
+        <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+    </plugins>
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
     <access origin="*" />
 </widget>
