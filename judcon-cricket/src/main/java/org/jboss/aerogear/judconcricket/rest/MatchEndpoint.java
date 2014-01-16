@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
@@ -30,14 +31,25 @@ public class MatchEndpoint
    @Consumes("application/json")
    public Response create(MatchDTO dto)
    {
-      Match entity = dto.fromDTO(null, em);
-      em.persist(entity);
+	   Match entity;
+	   TypedQuery<Match> findByIdQuery = em.createQuery("SELECT DISTINCT m FROM Match m LEFT JOIN FETCH m.comments WHERE m.id = :entityId ORDER BY m.id", Match.class);
+	      findByIdQuery.setParameter("entityId", dto.getId());
+	      try {
+	    	  entity = findByIdQuery.getSingleResult(); 
+	      }
+	      catch(NoResultException exception){
+	    	  System.out.println("no entity was found");
+	    	  entity = dto.fromDTO(null, em); 
+	    	  em.persist(entity);
+	      }
+	      
+      
       return Response.created(UriBuilder.fromResource(MatchEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
    }
 
    @DELETE
-   @Path("/{id:[0-9][0-9]*}")
-   public Response deleteById(@PathParam("id") Long id)
+   @Path("/{id}")
+   public Response deleteById(@PathParam("id") String id)
    {
       Match entity = em.find(Match.class, id);
       if (entity == null)
@@ -49,9 +61,9 @@ public class MatchEndpoint
    }
 
    @GET
-   @Path("/{id:[0-9][0-9]*}")
+   @Path("/{id}")
    @Produces("application/json")
-   public Response findById(@PathParam("id") Long id)
+   public Response findById(@PathParam("id") String id)
    {
       TypedQuery<Match> findByIdQuery = em.createQuery("SELECT DISTINCT m FROM Match m LEFT JOIN FETCH m.comments WHERE m.id = :entityId ORDER BY m.id", Match.class);
       findByIdQuery.setParameter("entityId", id);
@@ -69,22 +81,30 @@ public class MatchEndpoint
    public List<MatchDTO> listAll()
    {
 	   CricScoreService cricScoreService = new CricScoreService();
-      final List<Match> searchResults = em.createQuery("SELECT DISTINCT m FROM Match m LEFT JOIN FETCH m.comments ORDER BY m.id", Match.class).getResultList();
-      final List<MatchDTO> results = new ArrayList<MatchDTO>();
+	   final List<MatchDTO> results = new ArrayList<MatchDTO>();
+	   //let's retrieve the remote matches
+	      for (MatchDTO searchResult : cricScoreService.getMatches())
+	      {
+	    	 this.create(searchResult); 
+	        
+	      }
+	  em.flush(); 
+	  final List<Match> searchResults = em.createQuery("SELECT DISTINCT m FROM Match m LEFT JOIN FETCH m.comments ORDER BY m.id", Match.class).getResultList();
+     
       for (Match searchResult : searchResults)
       {
          MatchDTO dto = new MatchDTO(searchResult);
          results.add(dto);
       }
-      //let's retrieve the remote matches
-      results.addAll(cricScoreService.getMatches());
+   
+     
       return results;
    }
 
    @PUT
-   @Path("/{id:[0-9][0-9]*}")
+   @Path("/{id}")
    @Consumes("application/json")
-   public Response update(@PathParam("id") Long id, MatchDTO dto)
+   public Response update(@PathParam("id") String id, MatchDTO dto)
    {
       TypedQuery<Match> findByIdQuery = em.createQuery("SELECT DISTINCT m FROM Match m LEFT JOIN FETCH m.comments WHERE m.id = :entityId ORDER BY m.id", Match.class);
       findByIdQuery.setParameter("entityId", id);

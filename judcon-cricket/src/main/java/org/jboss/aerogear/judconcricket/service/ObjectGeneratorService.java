@@ -56,7 +56,7 @@ public class ObjectGeneratorService {
 				match.setTitle(match.getTeamOne() + " Vs " + match.getTeamTwo());
 				String stringId = StringUtils
 						.getOnlyNumbers(getCharacterDataFromElement(matchId));
-				match.setId(Long.parseLong(stringId));
+				match.setId(stringId);
 				matches.add(match);
 			}
 

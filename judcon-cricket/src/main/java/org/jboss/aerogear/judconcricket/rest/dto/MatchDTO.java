@@ -15,7 +15,7 @@ public class MatchDTO implements Serializable
 {
 
    private String teamOne;
-   private Long id;
+   private String id;
    private String title;
    private String teamTwo;
    private String description;
@@ -52,6 +52,10 @@ public class MatchDTO implements Serializable
       if (entity == null)
       {
          entity = new Match();
+      }
+      if(this.getId() != null)
+      {
+    	entity.setId(this.getId());  
       }
       entity.setTeamOne(this.teamOne);
       entity.setTitle(this.title);
@@ -126,12 +130,12 @@ public class MatchDTO implements Serializable
       this.teamOne = teamOne;
    }
 
-   public Long getId()
+   public String getId()
    {
       return this.id;
    }
 
-   public void setId(final Long id)
+   public void setId(final String id)
    {
       this.id = id;
    }

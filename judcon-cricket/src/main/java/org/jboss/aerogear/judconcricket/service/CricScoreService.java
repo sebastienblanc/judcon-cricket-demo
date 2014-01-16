@@ -28,7 +28,7 @@ public class CricScoreService {
 		return matches;
 	}
 
-	public String getScore(long id) {
+	public String getScore(String id) {
 
 		String score = fetchDataService.getScore(id);
 		return score;

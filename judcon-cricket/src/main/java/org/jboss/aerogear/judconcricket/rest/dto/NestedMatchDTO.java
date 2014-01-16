@@ -9,7 +9,7 @@ public class NestedMatchDTO implements Serializable
 {
 
    private String teamOne;
-   private Long id;
+   private String id;
    private String title;
    private String teamTwo;
    private String description;
@@ -69,12 +69,12 @@ public class NestedMatchDTO implements Serializable
       this.teamOne = teamOne;
    }
 
-   public Long getId()
+   public String getId()
    {
       return this.id;
    }
 
-   public void setId(final Long id)
+   public void setId(final String id)
    {
       this.id = id;
    }

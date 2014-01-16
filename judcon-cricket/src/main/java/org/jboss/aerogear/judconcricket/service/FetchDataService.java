@@ -21,7 +21,7 @@ public class FetchDataService {
 	public static String BASE_URL = "http://www.espncricinfo.com/ci/engine/match/";
 	public static String LIVE_SCORE_URL = "http://static.espncricinfo.com/rss/livescores.xml";
 
-	public String getScore(long id) {
+	public String getScore(String id) {
 
 		String title = null;
 
