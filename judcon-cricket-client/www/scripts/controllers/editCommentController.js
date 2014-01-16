@@ -16,7 +16,7 @@ angular.module('judconcricket').controller('EditCommentController', function($sc
                     };
                     var labelObject = {
                         value : item.id,
-                        text : item.score
+                        text : item.title
                     };
                     if($scope.comment.match && item.id == $scope.comment.match.id) {
                         $scope.matchSelection = labelObject;
