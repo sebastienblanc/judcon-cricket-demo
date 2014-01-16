@@ -11,8 +11,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
 import org.jboss.aerogear.judconcricket.model.Match;
 import org.jboss.aerogear.judconcricket.rest.dto.MatchDTO;
+import org.jboss.aerogear.judconcricket.service.CricScoreService;
 
 /**
  * 
@@ -66,6 +68,7 @@ public class MatchEndpoint
    @Produces("application/json")
    public List<MatchDTO> listAll()
    {
+	   CricScoreService cricScoreService = new CricScoreService();
       final List<Match> searchResults = em.createQuery("SELECT DISTINCT m FROM Match m LEFT JOIN FETCH m.comments ORDER BY m.id", Match.class).getResultList();
       final List<MatchDTO> results = new ArrayList<MatchDTO>();
       for (Match searchResult : searchResults)
@@ -73,6 +76,8 @@ public class MatchEndpoint
          MatchDTO dto = new MatchDTO(searchResult);
          results.add(dto);
       }
+      //let's retrieve the remote matches
+      results.addAll(cricScoreService.getMatches());
       return results;
    }
 
