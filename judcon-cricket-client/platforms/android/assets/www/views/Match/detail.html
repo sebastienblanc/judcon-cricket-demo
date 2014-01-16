@@ -1,0 +1,64 @@
+<header ng-switch on="$location.path().endsWith('/Matchs/new')">
+    <h3 ng-switch-when="true">Create Match</h3>
+    <h3 ng-switch-when="false">View or edit Match</h3>
+</header>
+<form id="MatchForm" name="MatchForm" class="form-horizontal">
+    <div ng-show="displayError" class="alert alert-error">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    <div class="control-group" ng-class="{error: MatchForm.teamOne.$invalid}">
+        <label for="teamOne" class="control-label">Team One</label>
+        <div id="teamOneControls" class="controls">
+            <input id="teamOne" name="teamOne" type="text" class="topcoat-text-input"  ng-model="match.teamOne" placeholder="Enter the Match Team One"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: MatchForm.teamTwo.$invalid}">
+        <label for="teamTwo" class="control-label">Team Two</label>
+        <div id="teamTwoControls" class="controls">
+            <input id="teamTwo" name="teamTwo" type="text" class="topcoat-text-input"  ng-model="match.teamTwo" placeholder="Enter the Match Team Two"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: MatchForm.score.$invalid}">
+        <label for="score" class="control-label">Score</label>
+        <div id="scoreControls" class="controls">
+            <input id="score" name="score" type="text" class="topcoat-text-input"  ng-model="match.score" placeholder="Enter the Match Score"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: MatchForm.comments.$invalid}">
+        <label for="comments" class="control-label">Comments</label>
+        <div id="commentsControls" class="controls">
+            <select id="comments" name="comments" multiple ng-model="commentsSelection" ng-options="c.text for c in commentsSelectionList">
+                <option value="">Choose a Comments</option>
+            </select>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: MatchForm.title.$invalid}">
+        <label for="title" class="control-label">Title</label>
+        <div id="titleControls" class="controls">
+            <input id="title" name="title" type="text" class="topcoat-text-input"  ng-model="match.title" placeholder="Enter the Match Title"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: MatchForm.description.$invalid}">
+        <label for="description" class="control-label">Description</label>
+        <div id="descriptionControls" class="controls">
+            <input id="description" name="description" type="text" class="topcoat-text-input"  ng-model="match.description" placeholder="Enter the Match Description"></input>
+        </div>
+    </div>
+
+    <div class="bar bottom">
+        <div class="settings container">
+            <a href="#/"> <img src='img/home.svg' />
+            </a>
+            <a href="#/Posts"> <img src='img/listview.svg' />
+            </a>
+            <a id="savesaveMatch" name="saveMatch" role="button"
+               ng-click="save()" >
+                <img src='img/save.svg'/>
+            </a>
+            <a id="delete" name="delete" role="button"
+               ng-click="remove()" >
+                <img src='img/delete.svg'/>
+            </a>
+        </div>
+    </div>
+</form>

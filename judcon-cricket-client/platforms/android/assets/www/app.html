@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="judconcricket">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Judcon-cricket</title>
+    <link href="styles/topcoat-mobile-light.css" rel="stylesheet" media="screen">
+    <link href="styles/main.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="topcoat-navigation-bar bar">
+    <div class="topcoat-navigation-bar__item center full">
+        <h1 class="topcoat-navigation-bar__title">Judcon-cricket</h1>
+    </div>
+</div>
+
+                    <div id="main" ng-view>
+
+                </div>
+
+
+</div>
+    
+    <script src="scripts/vendor/jquery-1.9.1.js"></script>
+    <script src="scripts/vendor/angular.js"></script>
+    <script src="scripts/vendor/angular-resource.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/filters/startFromFilter.js"></script>
+    <script src="scripts/filters/genericSearchFilter.js"></script>
+    <script src="scripts/services/locationParser.js"></script>
+    <script src="scripts/services/CommentFactory.js"></script>
+    <script src="scripts/controllers/newCommentController.js"></script>
+    <script src="scripts/controllers/searchCommentController.js"></script>
+    <script src="scripts/controllers/editCommentController.js"></script>
+    <script src="scripts/services/MatchFactory.js"></script>
+    <script src="scripts/controllers/newMatchController.js"></script>
+    <script src="scripts/controllers/searchMatchController.js"></script>
+    <script src="scripts/controllers/editMatchController.js"></script>
+</body>
+</html>
