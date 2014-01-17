@@ -1,4 +1,8 @@
 'use strict';
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// device APIs are available
+//
 
 angular.module('judconcricket',['ngResource'])
   .config(['$routeProvider', function($routeProvider) {

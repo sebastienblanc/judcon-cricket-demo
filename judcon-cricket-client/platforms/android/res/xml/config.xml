@@ -6,6 +6,9 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <name>judcon-cricket-client</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -14,7 +17,7 @@
        JBoss by Red Hat
     </author>
     <plugins>
-        <plugin name="Device" value="CDVDevice" />
+        <plugin name="Device" value="org.apache.cordova.Device" />
         <plugin name="Logger" value="CDVLogger" />
         <plugin name="Compass" value="CDVLocation" />
         <plugin name="Accelerometer" value="CDVAccelerometer" />

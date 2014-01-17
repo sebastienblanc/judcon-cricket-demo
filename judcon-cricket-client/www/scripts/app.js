@@ -1,5 +1,7 @@
 'use strict';
-
+function onDeviceReady() {
+	 alert(device.uuid);
+	}
 angular.module('judconcricket',['ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider

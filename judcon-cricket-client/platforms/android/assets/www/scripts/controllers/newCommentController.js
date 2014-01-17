@@ -8,7 +8,7 @@ angular.module('judconcricket').controller('NewCommentController', function ($sc
         $scope.matchSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.id,
-                text : item.score
+                text : item.title
             });
         });
     });
@@ -29,6 +29,7 @@ angular.module('judconcricket').controller('NewCommentController', function ($sc
         var errorCallback = function() {
             $scope.displayError = true;
         };
+        $scope.comment.author = device.uuid;
         CommentResource.save($scope.comment, successCallback, errorCallback);
     };
     

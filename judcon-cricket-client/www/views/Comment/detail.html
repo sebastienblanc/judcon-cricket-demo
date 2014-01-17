@@ -6,12 +6,6 @@
     <div ng-show="displayError" class="alert alert-error">
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
-    <div class="control-group" ng-class="{error: CommentForm.author.$invalid}">
-        <label for="author" class="control-label">Author</label>
-        <div id="authorControls" class="controls">
-            <input id="author" name="author" type="text" class="topcoat-text-input"  ng-model="comment.author" placeholder="Enter the Comment Author"></input>
-        </div>
-    </div>
     <div class="control-group" ng-class="{error: CommentForm.content.$invalid}">
         <label for="content" class="control-label">Content</label>
         <div id="contentControls" class="controls">

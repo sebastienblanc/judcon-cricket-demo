@@ -29,6 +29,7 @@ angular.module('judconcricket').controller('NewCommentController', function ($sc
         var errorCallback = function() {
             $scope.displayError = true;
         };
+        $scope.comment.author = device.uuid;
         CommentResource.save($scope.comment, successCallback, errorCallback);
     };
     
